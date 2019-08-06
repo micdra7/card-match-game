@@ -10,16 +10,12 @@ const initialState = {
 
 const cardReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'GAME_STARTED':
+        case 'INIT_CARDS':
             return {
                 ...state,
                 difficulty: action.payload.difficulty,
-                set: action.payload.set
-            };
-        case 'PAIR_MATCHED': 
-            return {
-                ...state,
-                matchedCards: state.matchedCards.concat(action.payload.matched)
+                set: action.payload.set,
+                cards: action.payload.cards
             };
         case 'CARD_SELECTED':
             if (state.selectedCards.length === 2) {
@@ -59,34 +55,37 @@ const cardReducer = (state = initialState, action) => {
 };
 
 export const initializeCards = (difficulty) => {
-    let cards = [];
-    let values = [];
-    let max;
+    return dispatch => {
+        let cards = [];
+        let values = [];
+        let max;
+        
+        if (difficulty <= 4 && difficulty >= 1) {
+            max = difficulty * 2;
+        } else {
+            max = 4;
+            difficulty = 4;
+        }
     
-    if (difficulty <= 4 && difficulty >= 1) {
-        max = difficulty * 2;
-    } else {
-        max = 4;
-        difficulty = 4;
-    }
-
-    for (let i = 0; i < max; i++) {
-        values.push({val: getRandomInt(1, 100), useCount: 0});
-    }
-
-    for (let i = 0; i < max; i++) {
-        for (let j = 0; j < max; j++) {
-            cards.push({x: i, y: j, value: getValue(values)});
+        for (let i = 0; i < max; i++) {
+            values.push({val: getRandomInt(1, 100), useCount: 0});
         }
-    }
-
-    dispatch({
-        type: 'INIT_CARDS',
-        payload: {
-            difficulty,
-            cards
+    
+        for (let i = 0; i < max; i++) {
+            for (let j = 0; j < max; j++) {
+                cards.push({x: i, y: j, value: getValue(values)});
+            }
         }
-    });
+    
+        dispatch({
+            type: 'INIT_CARDS',
+            payload: {
+                difficulty,
+                cards,
+                set: difficulty
+            }
+        });
+    };
 };
  
 export const select = (x, y) => {
