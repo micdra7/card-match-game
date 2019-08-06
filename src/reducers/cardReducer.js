@@ -68,7 +68,15 @@ export const initializeCards = (difficulty) => {
         }
     
         for (let i = 0; i < max; i++) {
-            values.push({val: getRandomInt(1, 100), useCount: 0});
+            let random = getRandomInt(1, 10);
+            
+            const vals = values.map(v => v.val);
+
+            while (vals.includes(random)) {
+                random = getRandomInt(1, 10);
+            }
+
+            values.push({val: random, useCount: 0});
         }
     
         for (let i = 0; i < max; i++) {

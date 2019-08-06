@@ -5,7 +5,17 @@ import Card from '../Card/Card';
 import './CardCollection.scss';
 
 const CardCollection = (props) => {
-    const cards = props.visibleCards.map(card => <Card key={card.value} value={card.value} set={props.set} handleClick={() => props.select(card.x, card.y)} />);
+    const cards = props.visibleCards.map((card, index) => {
+        if (card.value !== 0) {
+            return (
+                <Card key={card.value} value={card.value} set={props.set} handleClick={() => props.select(card.x, card.y)} />
+            );
+        }
+
+        return (
+            <div key={props.set * index}></div>
+        );
+    });
 
     return (
         <div className="card-collection">
@@ -23,6 +33,8 @@ const cardsToShow = ({ cards, matchedCards }) => {
         if (matchedCards.indexOf(card) !== -1) {
             card.value = 0;
         }
+
+        return card;
     });
 };
 

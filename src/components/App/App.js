@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import CardCollection from '../CardCollection/CardCollection';
+import { initializeCards } from '../../reducers/cardReducer';
 import './App.scss';
+import { connect } from 'react-redux';
 
-function App() {
+const App = (props) => {
+
+    useEffect(() => {
+        props.initializeCards(3);
+    }, []);
 
     return (
         <div>
+            <CardCollection />
         </div>
     );
-}
+};
 
-export default App;
+export default connect(null, {initializeCards})(App);

@@ -5,9 +5,18 @@ export const getRandomInt = (min, max) => {
 };
 
 export const getValue = (values) => {
-    let val;
+    console.log(values);
+    let rand = getRandomInt(0, values.length - 1);
+    console.log(rand);
+    
+    let val = values[rand];
+    while (val.useCount  === values.length) {
+        rand = getRandomInt(0, values.length - 1);
+        val = values[rand];
+        console.log(rand);
+    }
 
-    while ((val = values[getRandomInt(0, values.length)]).count === 2);
-
+    val.useCount++;
+    
     return val.val;
 };
