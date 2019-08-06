@@ -18,6 +18,7 @@ module.exports = {
 	},
 	'rules': {
 		'no-console': 'off',
+		'react/prop-types': 0,
 		'quotes': [
 			'error',
 			'single'
