@@ -10,7 +10,7 @@ export const getValue = (values) => {
     console.log(rand);
     
     let val = values[rand];
-    while (val.useCount  === values.length) {
+    while (val.useCount === 2) {
         rand = getRandomInt(0, values.length - 1);
         val = values[rand];
         console.log(rand);

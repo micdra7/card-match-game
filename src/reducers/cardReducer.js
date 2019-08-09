@@ -63,19 +63,12 @@ export const initializeCards = (difficulty) => {
         if (difficulty <= 4 && difficulty >= 1) {
             max = difficulty * 2;
         } else {
-            max = 4;
+            max = 8;
             difficulty = 4;
         }
     
-        for (let i = 0; i < max; i++) {
-            let random = getRandomInt(1, 10);
-            
-            const vals = values.map(v => v.val);
-
-            while (vals.includes(random)) {
-                random = getRandomInt(1, 10);
-            }
-
+        for (let i = 0; i < max * difficulty; i++) {
+            let random = getRandomInt(1, 100);
             values.push({val: random, useCount: 0});
         }
     

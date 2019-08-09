@@ -5,15 +5,10 @@ import Card from '../Card/Card';
 import './CardCollection.scss';
 
 const CardCollection = (props) => {
-    const cards = props.visibleCards.map((card, index) => {
-        if (card.value !== 0) {
-            return (
-                <Card key={card.value} value={card.value} set={props.set} handleClick={() => props.select(card.x, card.y)} />
-            );
-        }
-
+    const cards = props.cards.map((card) => {
+        const cardClassName = props.matchedCards.includes(card) ? 'card invisible' : 'card';
         return (
-            <div key={props.set * index}></div>
+            <Card key={card.value} value={card.value} set={props.set} handleClick={() => props.select(card.x, card.y)} className={cardClassName} />
         );
     });
 
@@ -24,23 +19,10 @@ const CardCollection = (props) => {
     );
 };
 
-const cardsToShow = ({ cards, matchedCards }) => {
-    if (matchedCards.length === 0) {
-        return cards;
-    }
-
-    return cards.filter(card => {
-        if (matchedCards.indexOf(card) !== -1) {
-            card.value = 0;
-        }
-
-        return card;
-    });
-};
-
 const mapStateToProps = (state) => {
     return {
-        visibleCards: cardsToShow(state),
+        cards: state.cards,
+        matchedCards: state.matchedCards,
         set: state.set
     };
 };

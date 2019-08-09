@@ -1,13 +1,13 @@
 import React from 'react';
 import './Card.scss';
 
-const Card = ({ value, set, handleClick }) => {
+const Card = ({ value, set, handleClick, className }) => {
 
     const baseUrl = 'https://robohash.org/';
     
     return (
-        <div className="card" onClick={handleClick}>
-            <img src={baseUrl + value + '?set=set' + set} alt="robot" />
+        <div className={className} onClick={handleClick}>
+            <img src={baseUrl + value + '?set=set' + set + '&size=200x200'} alt="robot" />
         </div>
     );
 };

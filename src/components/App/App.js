@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 const App = (props) => {
 
     useEffect(() => {
-        props.initializeCards(3);
-    }, []);
+        props.initializeCards(1);
+    }, [props]);
 
     return (
         <div>

@@ -6,4 +6,8 @@
         height: 200px;
         width: auto;
     }
+
+    &.invisible {
+        opacity: 0;
+    }
 }
