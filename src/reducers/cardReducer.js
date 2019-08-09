@@ -17,17 +17,20 @@ const cardReducer = (state = initialState, action) => {
                 set: action.payload.set,
                 cards: action.payload.cards
             };
-        case 'CARD_SELECTED':
-            if (state.selectedCards.length === 2) {
-                if (state.selectedCards[0].value === state.selectedCards[1].value) {
+        case 'CARD_SELECTED': {
+            const selected = state.selectedCards.concat(state.cards.filter(card => card.x === action.payload.x && card.y === action.payload.y));
 
-                    const matched = state.matchedCards.concat(state.selectedCards);
+            if (selected.length === 2) {
+                if (selected[0].value === selected[1].value) {
+
+                    const matched = state.matchedCards.concat(selected);
 
                     if (matched.length === state.cards.length) {
                         return {
                             ...state,
                             cards: [],
-                            selectedCards: []
+                            selectedCards: [],
+                            matchedCards: []
                         };
                     }
 
@@ -45,10 +48,10 @@ const cardReducer = (state = initialState, action) => {
             } else {
                 return {
                     ...state,
-                    selectedCards: state.selectedCards
-                        .concat(state.cards.filter(card => card.x === action.payload.x && card.y === action.payload.y))
+                    selectedCards: selected
                 };
             }
+        }
         default:
             return state;
     }
@@ -58,6 +61,7 @@ export const initializeCards = (difficulty) => {
     return dispatch => {
         let cards = [];
         let values = [];
+        let uniqueRandomInts = [];
         let max;
         
         if (difficulty <= 4 && difficulty >= 1) {
@@ -68,7 +72,12 @@ export const initializeCards = (difficulty) => {
         }
     
         for (let i = 0; i < max * difficulty; i++) {
-            let random = getRandomInt(1, 100);
+            let random;
+
+            do  {
+                random = getRandomInt(1, 100);
+            } while (uniqueRandomInts.indexOf(random) !== -1);
+            
             values.push({val: random, useCount: 0});
         }
     
@@ -77,7 +86,7 @@ export const initializeCards = (difficulty) => {
                 cards.push({x: i, y: j, value: getValue(values)});
             }
         }
-    
+        
         dispatch({
             type: 'INIT_CARDS',
             payload: {
