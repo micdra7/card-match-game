@@ -5,11 +5,13 @@ import Card from '../Card/Card';
 import './CardCollection.scss';
 
 const CardCollection = (props) => {
-    const cards = props.cards.map((card) => {
+
+    const cards = props.cards.map((card, index) => {
         const cardClassName = props.matchedCards.includes(card) ? 'card invisible' : 'card';
         const handleClick = props.matchedCards.includes(card) ? () => {} : () => props.select(card.x, card.y);
+
         return (
-            <Card key={card.value} value={card.value} set={props.set} handleClick={handleClick} className={cardClassName} />
+            <Card key={card.value * index + props.set} value={card.value} set={props.set} handleClick={handleClick} className={cardClassName} />
         );
     });
 
