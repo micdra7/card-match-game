@@ -61,7 +61,6 @@ export const initializeCards = (difficulty) => {
     return dispatch => {
         let cards = [];
         let values = [];
-        let usedValues = [];
         let uniqueRandomInts = [];
         let max;
         
@@ -81,10 +80,12 @@ export const initializeCards = (difficulty) => {
             
             values.push(random);
         }
-    
+
+        values = values.concat(values);
         for (let i = 0; i < max; i++) {
             for (let j = 0; j < max; j++) {
-                cards.push({x: i, y: j, value: getValue(values, usedValues)});
+                cards.push({x: i, y: j, value: getValue(values)});
+                values.splice(values.indexOf(cards[cards.length - 1].value), 1);
             }
         }
         
