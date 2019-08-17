@@ -99,7 +99,7 @@ export const initializeCards = (difficulty) => {
         });
     };
 };
- 
+
 export const select = (x, y) => {
     return {
         type: 'CARD_SELECTED',
