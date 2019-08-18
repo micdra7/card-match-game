@@ -8,10 +8,12 @@ import './App.scss';
 
 const App = () => {
 
+    const links = [{href: '/game', name: 'Start game'}, {href: '/scoreboard', name: 'Scoreboard'}, {href: '/about', name: 'About'}];
+
     return (
         <div className="app-wrapper">
             <Router>
-                <Route exact path="/" render={() => <Menu />} />
+                <Route exact path="/" render={() => <Menu links={links} />} />
                 <Route path="/game" render={() => <CardCollection />} />
                 <Route path="/scoreboard" render={() => <Scoreboard />} />
                 <Route path="/about" render={() => <About />} />

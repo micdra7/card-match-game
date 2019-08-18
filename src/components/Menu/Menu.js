@@ -2,11 +2,14 @@ import React from 'react';
 import MenuLink from '../MenuLink/MenuLink';
 import './Menu.scss';
 
-const Menu = () => {
+const Menu = ({ links }) => {
+
+    const renderedLinks = links.map(link => 
+        (<MenuLink key={link.href.length * link.name.length} href={link.href} className="primary" text={link.name} />));
 
     return (
         <div className="menu-wrapper">
-            <MenuLink href="/game" className="primary" text="button" />
+            {renderedLinks}
         </div>
     );
 };

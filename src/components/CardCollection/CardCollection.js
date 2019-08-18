@@ -7,8 +7,8 @@ import './CardCollection.scss';
 const CardCollection = ({ cards, matchedCards, difficulty, set, select, initializeCards }) => {
 
     useEffect(() => {
-        initializeCards(1);
-    }, [initializeCards]);
+        initializeCards(difficulty);
+    }, [initializeCards, difficulty]);
 
     const renderedCards = cards.map((card, index) => {
         const cardClassName = matchedCards.includes(card) ? 'card invisible' : 'card';
