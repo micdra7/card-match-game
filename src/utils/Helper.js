@@ -21,3 +21,7 @@ export const saveToScoreboardAndReturnScore = (score, name) => {
 
     return score;
 };
+
+export const getScoreboard = () => {
+    return JSON.parse(localStorage.getItem(scoreArrayKey)) || [];
+};
