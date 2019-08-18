@@ -1,4 +1,4 @@
-import { getRandomInt, getValue } from './Helper';
+import { getRandomInt } from './Helper';
 
 test('Get value between 1 and 10', () => {
     const value = getRandomInt(1, 10);
