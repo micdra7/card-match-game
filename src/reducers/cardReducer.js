@@ -79,12 +79,14 @@ export const initializeCards = (difficulty) => {
             } while (uniqueRandomInts.indexOf(random) !== -1);
             
             values.push(random);
+            uniqueRandomInts.push(random);
         }
 
         values = values.concat(values);
         for (let i = 0; i < max; i++) {
             for (let j = 0; j < max; j++) {
                 cards.push({x: i, y: j, value: getValue(values)});
+                
                 values.splice(values.indexOf(cards[cards.length - 1].value), 1);
             }
         }
@@ -99,7 +101,7 @@ export const initializeCards = (difficulty) => {
         });
     };
 };
- 
+
 export const select = (x, y) => {
     return {
         type: 'CARD_SELECTED',

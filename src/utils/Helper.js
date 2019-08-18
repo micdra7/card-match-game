@@ -6,6 +6,5 @@ export const getRandomInt = (min, max) => {
 
 export const getValue = (values) => {
     let rand = getRandomInt(0, values.length - 1);
-
     return values[rand];
 };
