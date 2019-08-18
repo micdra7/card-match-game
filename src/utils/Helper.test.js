@@ -1,8 +1,12 @@
-import { getRandomInt } from './Helper';
+import { getRandomInt, saveToScoreboardAndReturnScore } from './Helper';
 
 test('Get value between 1 and 10', () => {
     const value = getRandomInt(1, 10);
 
     expect(value).toBeGreaterThanOrEqual(1);
     expect(value).toBeLessThanOrEqual(10);
+});
+
+test('Get same value as given', () => {
+   expect(saveToScoreboardAndReturnScore(1, '')).toBe(1); 
 });

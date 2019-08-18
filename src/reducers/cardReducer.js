@@ -4,8 +4,11 @@ const initialState = {
     cards: [],
     matchedCards: [],
     selectedCards: [],
+    time: 0,
     difficulty: 1,
-    set: 1
+    set: 1,
+    score: 0,
+    name: ''
 };
 
 const cardReducer = (state = initialState, action) => {
@@ -15,7 +18,8 @@ const cardReducer = (state = initialState, action) => {
                 ...state,
                 difficulty: action.payload.difficulty,
                 set: action.payload.set,
-                cards: action.payload.cards
+                cards: action.payload.cards,
+                time: Date.now()
             };
         case 'CARD_SELECTED': {
             const selected = state.selectedCards.concat(state.cards.filter(card => card.x === action.payload.x && card.y === action.payload.y));
@@ -28,6 +32,7 @@ const cardReducer = (state = initialState, action) => {
                     if (matched.length === state.cards.length) {
                         return {
                             ...state,
+                            score: state.score += 40,
                             cards: [],
                             selectedCards: [],
                             matchedCards: []
@@ -36,6 +41,7 @@ const cardReducer = (state = initialState, action) => {
 
                     return {
                         ...state,
+                        score: state.score += 40,
                         matchedCards: matched,
                         selectedCards: []
                     };
@@ -52,6 +58,16 @@ const cardReducer = (state = initialState, action) => {
                 };
             }
         }
+        case 'SET_NAME':
+            return {
+                ...state,
+                name: action.payload
+            };
+        case 'SET_SCORE':
+            return {
+                ...state,
+                score: action.payload
+            };
         default:
             return state;
     }
@@ -108,6 +124,20 @@ export const select = (x, y) => {
         payload: {
             x, y
         }
+    };
+};
+
+export const setScore = (score) => {
+    return {
+        type: 'SET_SCORE',
+        payload: score
+    };
+};
+
+export const setName = (name) => {
+    return {
+        type: 'SET_NAME',
+        payload: name
     };
 };
 
