@@ -2,19 +2,22 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import CardCollection from '../CardCollection/CardCollection';
 import Menu from '../Menu/Menu';
+import DifficultySelectScreen from '../DifficultySelectScreen/DifficultySelectScreen';
 import Scoreboard from '../Scoreboard/Scoreboard';
 import About from '../About/About'; 
 import './App.scss';
 
 const App = () => {
 
-    const links = [{href: '/game', name: 'Start game'}, {href: '/scoreboard', name: 'Scoreboard'}, {href: '/about', name: 'About'}];
+    const links = [{href: '/game/difficulty/choose', name: 'Start game'}, {href: '/scoreboard', name: 'Scoreboard'}, {href: '/about', name: 'About'}];
+    const difficultyList = [{value: 1, name: 'Easy'}, {value: 2, name: 'Normal'}, {value: 3, name: 'Hard'}, {value: 4, name: 'Very hard'}];
 
     return (
         <div className="app-wrapper">
             <Router>
                 <Route exact path="/" render={() => <Menu links={links} />} />
-                <Route path="/game" render={() => <CardCollection />} />
+                <Route exact path="/game/:difficulty" render={({ match }) => <CardCollection difficulty={match.params.difficulty} />} />
+                <Route exact path="/game/difficulty/choose" render={() => <DifficultySelectScreen difficultyList={difficultyList} />} />
                 <Route path="/scoreboard" render={() => <Scoreboard />} />
                 <Route path="/about" render={() => <About />} />
             </Router>

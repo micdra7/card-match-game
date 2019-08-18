@@ -19,13 +19,8 @@ const CardCollection = ({ cards, matchedCards, difficulty, set, select, initiali
         );
     });
 
-    const style = {
-        width: cards.length / (difficulty * 2)  * 200 + 'px',
-        height: cards.length / (difficulty * 2) * 200 + 'px'
-    };
-
     return (
-        <div className="card-collection" style={style}>
+        <div className="card-collection">
             {renderedCards}
         </div>
     );
@@ -35,7 +30,6 @@ const mapStateToProps = (state) => {
     return {
         cards: state.cards,
         matchedCards: state.matchedCards,
-        difficulty: state.difficulty,
         set: state.set
     };
 };
