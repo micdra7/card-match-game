@@ -6,7 +6,7 @@ const Menu = () => {
 
     return (
         <div className="menu-wrapper">
-            <MenuLink className="primary" text="button" />
+            <MenuLink href="/game" className="primary" text="button" />
         </div>
     );
 };

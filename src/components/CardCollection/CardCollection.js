@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { select } from '../../reducers/cardReducer';
+import { select, initializeCards } from '../../reducers/cardReducer';
 import Card from '../Card/Card';
 import './CardCollection.scss';
 
-const CardCollection = (props) => {
+const CardCollection = ({ cards, matchedCards, difficulty, set, select, initializeCards }) => {
 
-    const cards = props.cards.map((card, index) => {
-        const cardClassName = props.matchedCards.includes(card) ? 'card invisible' : 'card';
-        const handleClick = props.matchedCards.includes(card) ? () => {} : () => props.select(card.x, card.y);
+    useEffect(() => {
+        initializeCards(1);
+    }, [initializeCards]);
+
+    const renderedCards = cards.map((card, index) => {
+        const cardClassName = matchedCards.includes(card) ? 'card invisible' : 'card';
+        const handleClick = matchedCards.includes(card) ? () => {} : () => select(card.x, card.y);
 
         return (
-            <Card key={card.value * index + props.set} value={card.value} set={props.set} handleClick={handleClick} className={cardClassName} />
+            <Card key={card.value * index + set} value={card.value} set={set} handleClick={handleClick} className={cardClassName} />
         );
     });
 
     const style = {
-        width: props.cards.length / (props.difficulty * 2)  * 200 + 'px',
-        height: props.cards.length / (props.difficulty * 2) * 200 + 'px'
+        width: cards.length / (difficulty * 2)  * 200 + 'px',
+        height: cards.length / (difficulty * 2) * 200 + 'px'
     };
 
     return (
         <div className="card-collection" style={style}>
-            {cards}
+            {renderedCards}
         </div>
     );
 };
@@ -37,7 +41,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    select
+    select,
+    initializeCards
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardCollection);
