@@ -1,0 +1,28 @@
+@import '../../../../public/assets/styles/variables.scss';
+
+.scoreboard-entry {
+    color: $secondary-color;
+    font-family: $secondary-font;
+    text-shadow: 3px 3px 3px $primary-dark;
+    font-size: 2rem;
+    
+    & .name {
+        font-weight: bold;
+        font-size: larger;
+        margin-right: .25rem;
+    }
+
+    & .score {
+        margin-left: .25rem;
+    }
+
+    @media screen and (max-width: $medium-breakpoint) {
+        & .name {
+            margin: 0;
+        }
+    
+        & .score {
+            margin: 0;
+        }
+    }
+}
