@@ -9,4 +9,9 @@
     &.invisible {
         opacity: 0;
     }
+
+    &.visible {
+        animation: flipIn 1s;
+        animation-fill-mode: forwards;
+    }
 }

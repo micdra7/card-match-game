@@ -5,14 +5,14 @@ import { select, initializeCards } from '../../reducers/cardReducer';
 import Card from '../Card/Card';
 import './CardCollection.scss';
 
-const CardCollection = ({ cards, matchedCards, difficulty, set, select, initializeCards }) => {
+const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, set, select, initializeCards }) => {
 
     useEffect(() => {
         initializeCards(difficulty);
     }, [initializeCards, difficulty]);
 
     const renderedContent = cards.length === 0 ? <Redirect to="/scoreboard/input" /> : cards.map((card, index) => {
-        const cardClassName = matchedCards.includes(card) ? 'card invisible' : 'card';
+        const cardClassName = matchedCards.includes(card) ? 'card invisible' : selectedCards.includes(card) ? 'card visible' : 'card';
         const handleClick = matchedCards.includes(card) ? () => {} : () => select(card.x, card.y);
         const cardStyle = {width: `${100/(difficulty*2)}%`, height: `${100/(difficulty*2)}%`};
 
@@ -21,12 +21,15 @@ const CardCollection = ({ cards, matchedCards, difficulty, set, select, initiali
         );
     });
 
-    const gridForDifficulty = ['50% 50%', '25% 25% 25% 25%', 
-        '16.67% 16.67% 16.67% 16.67% 16.67% 16.67%', '12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%'];
+    let gridForDifficulty = '';
+
+    for (let i = 0; i <= difficulty; i++) {
+        gridForDifficulty += `${(100/(difficulty*2)).toFixed(2)}% `;
+    }
 
     const style = {
-        gridTemplateColumns: gridForDifficulty[difficulty-1],
-        gridTemplateRows: gridForDifficulty[difficulty-1]
+        gridTemplateColumns: gridForDifficulty,
+        gridTemplateRows: gridForDifficulty
     };
 
     return (
@@ -40,6 +43,7 @@ const mapStateToProps = (state) => {
     return {
         cards: state.cards,
         matchedCards: state.matchedCards,
+        selectedCards: state.selectedCards,
         set: state.set
     };
 };
