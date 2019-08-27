@@ -4,6 +4,7 @@ import CardCollection from '../CardCollection/CardCollection';
 import Menu from '../Menu/Menu';
 import DifficultySelectScreen from '../DifficultySelectScreen/DifficultySelectScreen';
 import Scoreboard from '../Scoreboard/Scoreboard';
+import ScoreboardInput from '../ScoreboardInput/ScoreboardInput';
 import About from '../About/About'; 
 import './App.scss';
 
@@ -18,7 +19,8 @@ const App = () => {
                 <Route exact path="/" render={() => <Menu links={links} />} />
                 <Route exact path="/game/:difficulty" render={({ match }) => <CardCollection difficulty={match.params.difficulty} />} />
                 <Route exact path="/game/difficulty/choose" render={() => <DifficultySelectScreen difficultyList={difficultyList} />} />
-                <Route path="/scoreboard" render={() => <Scoreboard />} />
+                <Route exact path="/scoreboard" render={() => <Scoreboard />} />
+                <Route path="/scoreboard/input" render={() => <ScoreboardInput />} />
                 <Route path="/about" render={() => <About />} />
             </Router>
         </div>
