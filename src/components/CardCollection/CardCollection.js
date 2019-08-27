@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { select, initializeCards } from '../../reducers/cardReducer';
 import Card from '../Card/Card';
-import ScoreboardInput from '../ScoreboardInput/ScoreboardInput';
 import './CardCollection.scss';
 
 const CardCollection = ({ cards, matchedCards, difficulty, set, select, initializeCards }) => {
@@ -11,7 +11,7 @@ const CardCollection = ({ cards, matchedCards, difficulty, set, select, initiali
         initializeCards(difficulty);
     }, [initializeCards, difficulty]);
 
-    const renderedContent = cards.length === 0 ? <ScoreboardInput /> : cards.map((card, index) => {
+    const renderedContent = cards.length === 0 ? <Redirect to="/scoreboard/input" /> : cards.map((card, index) => {
         const cardClassName = matchedCards.includes(card) ? 'card invisible' : 'card';
         const handleClick = matchedCards.includes(card) ? () => {} : () => select(card.x, card.y);
         const cardStyle = {width: `${100/(difficulty*2)}%`, height: `${100/(difficulty*2)}%`};
@@ -22,7 +22,7 @@ const CardCollection = ({ cards, matchedCards, difficulty, set, select, initiali
     });
 
     const gridForDifficulty = ['50% 50%', '25% 25% 25% 25%', 
-        '16.67% 16.67% 16.67% 16.67% 16.67% 16.67%', '12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%']
+        '16.67% 16.67% 16.67% 16.67% 16.67% 16.67%', '12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%'];
 
     const style = {
         gridTemplateColumns: gridForDifficulty[difficulty-1],

@@ -6,7 +6,7 @@ import { saveToScoreboardAndReturnScore } from '../../utils/Helper';
 import './ScoreboardInput.scss';
 
 const ScoreboardInput = ({ score, name, time, setScore, setName }) => {
-
+    
     const [redirect, setRedirect] = useState(false);
 
     const handleSubmit = (event) => {
@@ -25,7 +25,7 @@ const ScoreboardInput = ({ score, name, time, setScore, setName }) => {
     return (
         <div className="scoreboard-input-wrapper">
             {
-                redirect ? <Redirect to="/" /> :
+                redirect || score === 0 ? <Redirect to="/" /> :
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="name">Your name</label>
                         <input type="text" name="name" value={name} onChange={handleChange} />
