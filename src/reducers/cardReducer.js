@@ -91,13 +91,13 @@ export const initializeCards = (difficulty) => {
             let random;
 
             do  {
-                random = getRandomInt(1, 100);
+                random = getRandomInt(0, 32);
             } while (uniqueRandomInts.indexOf(random) !== -1);
             
             values.push(random);
             uniqueRandomInts.push(random);
         }
-
+        debugger;
         values = values.concat(values);
         for (let i = 0; i < max; i++) {
             for (let j = 0; j < max; j++) {

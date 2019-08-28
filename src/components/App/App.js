@@ -6,9 +6,19 @@ import DifficultySelectScreen from '../DifficultySelectScreen/DifficultySelectSc
 import Scoreboard from '../Scoreboard/Scoreboard';
 import ScoreboardInput from '../ScoreboardInput/ScoreboardInput';
 import About from '../About/About'; 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faAmbulance, faAnchor, faBabyCarriage, faBath, faBed, faBeer, faBell, faBicycle,
+        faBinoculars, faBomb, faBook, faBug, faBus, faCamera, faCandyCane, faCar,
+        faCloud, faDrum, faFeather, faGuitar, faHeadphones, faHeart, faHelicopter, faKey,
+        faLightbulb, faLock, faMoon, faRocket, faTv, faUmbrella, faStar, faWrench} from '@fortawesome/free-solid-svg-icons';
 import './App.scss';
 
 const App = () => {
+
+    library.add(faAmbulance, faAnchor, faBabyCarriage, faBath, faBed, faBeer, faBell, faBicycle,
+                faBinoculars, faBomb, faBook, faBug, faBus, faCamera, faCandyCane, faCar,
+                faCloud, faDrum, faFeather, faGuitar, faHeadphones, faHeart, faHelicopter, faKey,
+                faLightbulb, faLock, faMoon, faRocket, faTv, faUmbrella, faStar, faWrench);
 
     const links = [{href: '/game/difficulty/choose', name: 'Start game'}, {href: '/scoreboard', name: 'Scoreboard'}, {href: '/about', name: 'About'}];
     const difficultyList = [{value: 1, name: 'Easy'}, {value: 2, name: 'Normal'}, {value: 3, name: 'Hard'}, {value: 4, name: 'Very hard'}];

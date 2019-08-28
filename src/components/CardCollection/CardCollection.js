@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { select, initializeCards } from '../../reducers/cardReducer';
+import { cardIcons } from '../../utils/Helper';
 import Card from '../Card/Card';
 import './CardCollection.scss';
 
@@ -17,13 +18,13 @@ const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, set, s
         const cardStyle = {width: `${100/(difficulty*2)}%`, height: `${100/(difficulty*2)}%`};
 
         return (
-            <Card style={cardStyle} key={card.value * index + set} value={card.value} set={set} handleClick={handleClick} className={cardClassName} />
+            <Card style={cardStyle} key={card.value * index + set} value={cardIcons[card.value]} set={set} handleClick={handleClick} className={cardClassName} />
         );
     });
 
     let gridForDifficulty = '';
 
-    for (let i = 0; i <= difficulty; i++) {
+    for (let i = 0; i < difficulty * 2; i++) {
         gridForDifficulty += `${(100/(difficulty*2)).toFixed(2)}% `;
     }
 
