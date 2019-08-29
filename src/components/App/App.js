@@ -6,6 +6,7 @@ import DifficultySelectScreen from '../DifficultySelectScreen/DifficultySelectSc
 import Scoreboard from '../Scoreboard/Scoreboard';
 import ScoreboardInput from '../ScoreboardInput/ScoreboardInput';
 import About from '../About/About'; 
+import { getScoreboard } from '../../utils/Helper';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faAmbulance, faAnchor, faBabyCarriage, faBath, faBed, faBeer, faBell, faBicycle,
         faBinoculars, faBomb, faBook, faBug, faBus, faCamera, faCandyCane, faCar,
@@ -29,7 +30,7 @@ const App = () => {
                 <Route exact path="/" render={() => <Menu links={links} />} />
                 <Route exact path="/game/:difficulty" render={({ match }) => <CardCollection difficulty={match.params.difficulty} />} />
                 <Route exact path="/game/difficulty/choose" render={() => <DifficultySelectScreen difficultyList={difficultyList} />} />
-                <Route exact path="/scoreboard" render={() => <Scoreboard />} />
+                <Route exact path="/scoreboard" render={() => <Scoreboard propScoreboard={[]} />} />
                 <Route path="/scoreboard/input" render={() => <ScoreboardInput />} />
                 <Route path="/about" render={() => <About />} />
             </Router>
