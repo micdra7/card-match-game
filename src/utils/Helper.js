@@ -1,3 +1,8 @@
+export const cardIcons = ['ambulance', 'anchor', 'baby-carriage', 'bath', 'bed', 'beer', 'bell', 'bicycle',
+                            'binoculars', 'bomb', 'book', 'bug', 'bus', 'camera', 'candy-cane', 'car',
+                            'cloud', 'drum', 'feather', 'guitar', 'headphones', 'heart', 'helicopter', 'key',
+                            'lightbulb', 'lock', 'moon', 'rocket', 'tv', 'umbrella', 'star', 'wrench'];
+
 export const scoreArrayKey = 'scoreArray';
 
 export const getRandomInt = (min, max) => {
