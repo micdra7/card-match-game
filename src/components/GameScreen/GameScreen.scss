@@ -1,0 +1,40 @@
+@import '../../../public/assets/styles/variables.scss';
+
+.game-screen-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    & .top-section {
+        height: 20%;
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        align-items: center;
+
+        @media screen and (max-width: $medium-breakpoint) {
+            justify-content: center;
+        }
+    }
+
+    & .bottom-section {
+        height: 80%;
+        width: 800px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+
+        @media screen and (max-width: $large-breakpoint) {
+            width: 600px;
+        }
+
+        @media screen and (max-width: $medium-breakpoint) {
+            width: 100%;
+        }
+    }
+}

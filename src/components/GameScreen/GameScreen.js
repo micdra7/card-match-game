@@ -9,7 +9,7 @@ export const GameScreen = ({cards, matchedCards, selectedCards, difficulty, sele
 
     useEffect(() => {
         initializeCards(difficulty);
-    }, []);
+    }, [difficulty, initializeCards]);
 
     return (
         <div className="game-screen-wrapper">

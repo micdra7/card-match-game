@@ -10,6 +10,8 @@ export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty,
         const handleClick = matchedCards.includes(card) ? () => {} : () => select(card.x, card.y);
         const cardStyle = {width: `${100/(difficulty*2)}%`, height: `${100/(difficulty*2)}%`};
 
+        console.log(card.value + cardIcons[card.value]);
+        
         return (
             <Card style={cardStyle} key={card.value * index + difficulty} value={cardIcons[card.value]} handleClick={handleClick} className={cardClassName} />
         );
