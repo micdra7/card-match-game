@@ -6,7 +6,6 @@ const initialState = {
     selectedCards: [],
     time: 0,
     difficulty: 1,
-    set: 1,
     score: 0,
     name: ''
 };
@@ -17,7 +16,6 @@ const cardReducer = (state = initialState, action) => {
             return {
                 ...state,
                 difficulty: action.payload.difficulty,
-                set: action.payload.set,
                 cards: action.payload.cards,
                 time: Date.now()
             };
@@ -97,7 +95,7 @@ export const initializeCards = (difficulty) => {
             values.push(random);
             uniqueRandomInts.push(random);
         }
-        debugger;
+        
         values = values.concat(values);
         for (let i = 0; i < max; i++) {
             for (let j = 0; j < max; j++) {
@@ -111,8 +109,7 @@ export const initializeCards = (difficulty) => {
             type: 'INIT_CARDS',
             payload: {
                 difficulty,
-                cards,
-                set: difficulty
+                cards
             }
         });
     };

@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { select, initializeCards } from '../../reducers/cardReducer';
-import { cardIcons } from '../../utils/Helper';
 import Card from '../Card/Card';
 import './CardCollection.scss';
 
-const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, set, select, initializeCards }) => {
+export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, select, initializeCards, cardIcons }) => {
 
     useEffect(() => {
         initializeCards(difficulty);
@@ -18,7 +17,7 @@ const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, set, s
         const cardStyle = {width: `${100/(difficulty*2)}%`, height: `${100/(difficulty*2)}%`};
 
         return (
-            <Card style={cardStyle} key={card.value * index + set} value={cardIcons[card.value]} set={set} handleClick={handleClick} className={cardClassName} />
+            <Card style={cardStyle} key={card.value * index + difficulty} value={cardIcons[card.value]} handleClick={handleClick} className={cardClassName} />
         );
     });
 
@@ -44,8 +43,7 @@ const mapStateToProps = (state) => {
     return {
         cards: state.cards,
         matchedCards: state.matchedCards,
-        selectedCards: state.selectedCards,
-        set: state.set
+        selectedCards: state.selectedCards
     };
 };
 
