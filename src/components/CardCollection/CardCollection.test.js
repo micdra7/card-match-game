@@ -37,9 +37,6 @@ describe('CardCollection.js', () => {
                     </Router>, container);
         });
 
-        console.log(container.innerHTML);
-        
-
         const cardSvg = container.querySelector('svg');
         expect(cardSvg.classList).toContain('fa-ambulance');
     });

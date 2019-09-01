@@ -1,6 +1,6 @@
 import { getRandomInt, getValue } from '../utils/Helper';
 
-const initialState = {
+export const initialState = {
     cards: [],
     matchedCards: [],
     selectedCards: [],
