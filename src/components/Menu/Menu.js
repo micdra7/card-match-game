@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { resetState } from '../../reducers/cardReducer';
 import MenuLink from '../MenuLink/MenuLink';
 import './Menu.scss';
 
-const Menu = ({ links }) => {
+export const Menu = ({ links, resetState }) => {
+
+    useEffect(() => {
+        resetState();
+    }, [resetState]);
 
     const renderedLinks = links.map(link => 
         (<MenuLink key={link.href.length * link.name.length} href={link.href} className="primary" text={link.name} />));
@@ -14,4 +20,4 @@ const Menu = ({ links }) => {
     );
 };
 
-export default Menu;
+export default connect(null, {resetState})(Menu);

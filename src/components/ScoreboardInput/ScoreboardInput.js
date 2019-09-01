@@ -37,6 +37,7 @@ const ScoreboardInput = ({ score, name, time, setScore, setName }) => {
 };
 
 const mapStateToProps = (state) => {
+    state = state.cardReducer;
     return {
         score: state.score,
         name: state.name,

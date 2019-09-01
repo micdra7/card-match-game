@@ -1,21 +1,17 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { select, initializeCards } from '../../reducers/cardReducer';
 import Card from '../Card/Card';
 import './CardCollection.scss';
 
-export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, select, initializeCards, cardIcons }) => {
-
-    useEffect(() => {
-        initializeCards(difficulty);
-    }, [initializeCards, difficulty]);
+export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, select, cardIcons }) => {
 
     const renderedContent = cards.length === 0 ? <Redirect to="/scoreboard/input" /> : cards.map((card, index) => {
         const cardClassName = matchedCards.includes(card) ? 'card invisible' : selectedCards.includes(card) ? 'card visible' : 'card';
         const handleClick = matchedCards.includes(card) ? () => {} : () => select(card.x, card.y);
         const cardStyle = {width: `${100/(difficulty*2)}%`, height: `${100/(difficulty*2)}%`};
 
+        console.log(card.value + cardIcons[card.value]);
+        
         return (
             <Card style={cardStyle} key={card.value * index + difficulty} value={cardIcons[card.value]} handleClick={handleClick} className={cardClassName} />
         );
@@ -39,17 +35,4 @@ export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty,
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        cards: state.cards,
-        matchedCards: state.matchedCards,
-        selectedCards: state.selectedCards
-    };
-};
-
-const mapDispatchToProps = {
-    select,
-    initializeCards
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardCollection);
+export default CardCollection;

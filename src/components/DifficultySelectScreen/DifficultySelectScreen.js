@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { resetState } from '../../reducers/cardReducer';
+import { connect } from 'react-redux';
 import MenuLink from '../MenuLink/MenuLink';
 import './DifficultySelectScreen.scss';
 
-const DifficultySelectScreen = ({ difficultyList }) => {
+export const DifficultySelectScreen = ({ difficultyList, resetState }) => {
+
+    useEffect(() => {
+        resetState();
+    }, [resetState]);
 
     const renderedLinks = difficultyList.map(difficulty => (
         <MenuLink key={difficulty.value * difficulty.name.length} href={`/game/${difficulty.value}`} 
@@ -17,4 +23,4 @@ const DifficultySelectScreen = ({ difficultyList }) => {
     );
 };
 
-export default DifficultySelectScreen;
+export default connect(null, {resetState})(DifficultySelectScreen);

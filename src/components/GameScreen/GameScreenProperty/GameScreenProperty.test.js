@@ -1,9 +1,7 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import { Provider } from 'react-redux';
-import store from '../../store';
-import App from './App';
+import GameScreenProperty from './GameScreenProperty';
 
 let container;
 
@@ -18,14 +16,11 @@ afterEach(() => {
     container = null;
 });
 
-describe('App.js', () => {
+describe('GameScreenProperty.js', () => {
     it('renders properly', () => {
         act(() => {
-            render( <Provider store={store}>
-                        <App />
-                    </Provider>, container);
+            render(<GameScreenProperty name={'TestProperty'} value={1} />, container);
         });
-
-        expect(container.textContent).toBe('Start gameScoreboardAbout');
+        expect(container.textContent).toBe('TestProperty: 1.00');
     });
-}); 
+});

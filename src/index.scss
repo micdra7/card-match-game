@@ -23,17 +23,6 @@ code {
 html {
     width: 100%;
     height: 100%;
-    background-image: url('/assets/images/background-large.jpg');
-    background-repeat:no-repeat;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    -o-background-size:cover;
-    background-size:cover;
-    background-position:center;
-
-    @media screen and (max-width: $medium-breakpoint) {
-        background-image: url('/assets/images/background-medium.jpg');
-    }
 }
 
 #root {
