@@ -25,13 +25,16 @@ export const GameScreen = ({cards, matchedCards, selectedCards, difficulty, sele
     );
 };
 
-const mapStateToProps = (state) => ({
-    cards: state.cards,
-    matchedCards: state.matchedCards,
-    selectedCards: state.selectedCards,
-    time: state.time,
-    score: state.score
-});
+const mapStateToProps = (state) => {
+    state = state.cardReducer;
+    return {
+        cards: state.cards,
+        matchedCards: state.matchedCards,
+        selectedCards: state.selectedCards,
+        time: state.time,
+        score: state.score
+    };
+};
 
 const mapDispatchToProps = {
     select,

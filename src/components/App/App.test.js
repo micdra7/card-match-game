@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
+import { Provider } from 'react-redux';
+import store from '../../store';
 import App from './App';
 
 let container;
@@ -19,7 +21,9 @@ afterEach(() => {
 describe('App.js', () => {
     it('renders properly', () => {
         act(() => {
-            render(<App />, container);
+            render( <Provider store={store}>
+                        <App />
+                    </Provider>, container);
         });
 
         expect(container.textContent).toBe('Start gameScoreboardAbout');

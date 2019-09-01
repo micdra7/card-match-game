@@ -140,8 +140,10 @@ export const setName = (name) => {
     };
 };
 
-export const resetState = () => ({
-    type: 'RESET_STATE'
-});
+export const resetState = () => {
+    return {
+        type: 'RESET_STATE'
+    };
+};
 
 export default cardReducer;

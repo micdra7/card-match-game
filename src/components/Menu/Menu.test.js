@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 
-import Menu from './Menu';
+import { Menu } from './Menu';
 
 let container;
 
@@ -22,7 +22,7 @@ describe('Menu.js', () => {
     it('renders properly', () => {
         act(() => {
             render( <Router>
-                        <Menu links={[{href: '/', name: 'Home'}, {href: '/game', name: 'Start game'}]} />
+                        <Menu links={[{href: '/', name: 'Home'}, {href: '/game', name: 'Start game'}]} resetState={() => {}} />
                     </Router>, container);
         });
 

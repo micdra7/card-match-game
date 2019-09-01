@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 
-import DifficultySelectScreen from './DifficultySelectScreen';
+import { DifficultySelectScreen } from './DifficultySelectScreen';
 
 let container;
 const difficultyList = [{value: 1, name: 'Easy'}, {value: 2, name: 'Normal'}];  
@@ -23,7 +23,7 @@ describe('DifficultySelectScreen.js', () => {
     it('renders properly', () => {
         act(() => {
             render( <Router>
-                        <DifficultySelectScreen difficultyList={difficultyList} />
+                        <DifficultySelectScreen difficultyList={difficultyList} resetState={() => {}} />
                     </Router>, container);
         });
 
