@@ -1,4 +1,4 @@
-import cardReducer, { initialState, initializeCards, select, setName, setScore } from './cardReducer';
+import cardReducer, { initialState, initializeCards, select, setName, setScore, resetState } from './cardReducer';
 
 describe('Actions', () => {
     it('select action', () => {
@@ -21,6 +21,10 @@ describe('Actions', () => {
         expect(args.type).toBe('INIT_CARDS');
         expect(args.payload.difficulty).toBe(2);
         expect(args.payload.cards.length).toBe(16);
+    });
+
+    it('resetState action', () => {
+        expect(resetState()).toStrictEqual({type: 'RESET_STATE'});
     });
 });
 
@@ -86,6 +90,11 @@ describe('CardReducer', () => {
         expect(state.cards.length).toBe(0);
         expect(state.matchedCards.length).toBe(0);
         expect(state.score).toBe(40);
+    });
+
+    it('RESET_STATE', () => {
+        const state = cardReducer(initialState, {type: 'RESET_STATE'});
+        expect(state).toStrictEqual(initialState);
     });
 });
 

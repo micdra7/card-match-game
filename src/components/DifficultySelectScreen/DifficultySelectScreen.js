@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { resetState } from '../../reducers/cardReducer';
 import MenuLink from '../MenuLink/MenuLink';
 import './DifficultySelectScreen.scss';
 
 const DifficultySelectScreen = ({ difficultyList }) => {
+
+    useEffect(() => {
+        resetState();
+    }, []);
 
     const renderedLinks = difficultyList.map(difficulty => (
         <MenuLink key={difficulty.value * difficulty.name.length} href={`/game/${difficulty.value}`} 

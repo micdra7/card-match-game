@@ -66,6 +66,8 @@ const cardReducer = (state = initialState, action) => {
                 ...state,
                 score: action.payload
             };
+        case 'RESET_STATE': 
+            return initialState;
         default:
             return state;
     }
@@ -137,5 +139,9 @@ export const setName = (name) => {
         payload: name
     };
 };
+
+export const resetState = () => ({
+    type: 'RESET_STATE'
+});
 
 export default cardReducer;
