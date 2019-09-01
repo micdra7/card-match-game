@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import CardCollection from '../CardCollection/CardCollection';
+import GameScreen from '../GameScreen/GameScreen';
 import Menu from '../Menu/Menu';
 import DifficultySelectScreen from '../DifficultySelectScreen/DifficultySelectScreen';
 import Scoreboard from '../Scoreboard/Scoreboard';
@@ -29,7 +29,7 @@ const App = () => {
         <div className="app-wrapper">
             <Router>
                 <Route exact path="/" render={() => <Menu links={links} />} />
-                <Route exact path="/game/:difficulty" render={({ match }) => <CardCollection difficulty={match.params.difficulty} cardIcons={cardIcons} />} />
+                <Route exact path="/game/:difficulty" render={({ match }) => <GameScreen difficulty={match.params.difficulty} cardIcons={cardIcons} />} />
                 <Route exact path="/game/difficulty/choose" render={() => <DifficultySelectScreen difficultyList={difficultyList} />} />
                 <Route exact path="/scoreboard" render={() => <Scoreboard propScoreboard={getScoreboard()} />} />
                 <Route path="/scoreboard/input" render={() => <ScoreboardInput />} />
