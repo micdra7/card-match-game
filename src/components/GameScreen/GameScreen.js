@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { select, initializeCards } from '../../reducers/cardReducer';
 import CardCollection from '../CardCollection/CardCollection';
@@ -7,8 +7,11 @@ import './GameScreen.scss';
 
 export const GameScreen = ({cards, matchedCards, selectedCards, difficulty, select, initializeCards, cardIcons, time, score}) => {
 
+    const [stateUpdated, setStateUpdated] = useState(false);
+
     useEffect(() => {
         initializeCards(difficulty);
+        setStateUpdated(true);
     }, [difficulty, initializeCards]);
 
     return (
@@ -18,7 +21,7 @@ export const GameScreen = ({cards, matchedCards, selectedCards, difficulty, sele
                 <GameScreenProperty name={'Score'} value={score} />
             </div>
             <div className="bottom-section">
-                <CardCollection cards={cards} matchedCards={matchedCards} selectedCards={selectedCards}
+                <CardCollection stateUpdated={stateUpdated} cards={cards} matchedCards={matchedCards} selectedCards={selectedCards}
                     select={select} difficulty={difficulty} cardIcons={cardIcons} />
             </div>
         </div>
