@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { select, initializeCards } from '../../reducers/cardReducer';
+import { select, initializeCards, setTime } from '../../reducers/cardReducer';
 import CardCollection from '../CardCollection/CardCollection';
 import GameScreenProperty from './GameScreenProperty/GameScreenProperty';
 import './GameScreen.scss';
@@ -17,7 +17,7 @@ export const GameScreen = ({cards, matchedCards, selectedCards, difficulty, sele
     return (
         <div className="game-screen-wrapper">
             <div className="top-section">
-                <GameScreenProperty name={'Time'} value={null} />
+                <GameScreenProperty name={'Time'} value={null} onStop={(time) => setTime(time)} />
                 <GameScreenProperty name={'Score'} value={score} />
             </div>
             <div className="bottom-section">

@@ -68,6 +68,11 @@ const cardReducer = (state = initialState, action) => {
             };
         case 'RESET_STATE': 
             return initialState;
+        case 'SET_TIME': 
+            return {
+                ...state,
+                time: action.payload
+            };
         default:
             return state;
     }
@@ -144,6 +149,13 @@ export const setName = (name) => {
 export const resetState = () => {
     return {
         type: 'RESET_STATE'
+    };
+};
+
+export const setTime = (time) => {
+    return {
+        type: 'SET_TIME',
+        payload: time
     };
 };
 

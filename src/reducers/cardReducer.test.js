@@ -1,4 +1,4 @@
-import cardReducer, { initialState, initializeCards, select, setName, setScore, resetState } from './cardReducer';
+import cardReducer, { initialState, initializeCards, select, setName, setScore, resetState, setTime } from './cardReducer';
 
 describe('Actions', () => {
     it('select action', () => {
@@ -35,6 +35,10 @@ describe('Actions', () => {
 
     it('resetState action', () => {
         expect(resetState()).toStrictEqual({type: 'RESET_STATE'});
+    });
+
+    it('setTime action', () => {
+        expect(setTime(1)).toStrictEqual({type: 'SET_TIME', payload: 1});
     });
 });
 
@@ -105,6 +109,11 @@ describe('CardReducer', () => {
     it('RESET_STATE', () => {
         const state = cardReducer(initialState, {type: 'RESET_STATE'});
         expect(state).toStrictEqual(initialState);
+    });
+
+    it('SET_TIME', () => {
+        const state = cardReducer(initialState, {type: 'SET_TIME', payload: 1});
+        expect(state.time).toBe(1);
     });
 });
 
