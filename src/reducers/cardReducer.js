@@ -43,12 +43,22 @@ const cardReducer = (state = initialState, action) => {
                         matchedCards: matched,
                         selectedCards: []
                     };
-                } else {
+                } else if (action.payload.x === -1 && action.payload.y === -1) {
                     return {
                         ...state,
                         selectedCards: []
                     };
+                } else {
+                    return {
+                        ...state,
+                        selectedCards: selected
+                    };
                 }
+            } else if (selected.length > 2) {
+                return {
+                    ...state,
+                    selectedCards: []
+                };
             } else {
                 return {
                     ...state,
@@ -68,6 +78,11 @@ const cardReducer = (state = initialState, action) => {
             };
         case 'RESET_STATE': 
             return initialState;
+        case 'SET_TIME': 
+            return {
+                ...state,
+                time: action.payload
+            };
         default:
             return state;
     }
@@ -127,6 +142,15 @@ export const select = (x, y) => {
     };
 };
 
+export const selectAfterTimeout = (x, y, timeout) => {
+    return dispatch => {
+
+        setTimeout(() => {
+            dispatch(select(x, y));
+        }, timeout);
+    };
+};
+
 export const setScore = (score) => {
     return {
         type: 'SET_SCORE',
@@ -144,6 +168,13 @@ export const setName = (name) => {
 export const resetState = () => {
     return {
         type: 'RESET_STATE'
+    };
+};
+
+export const setTime = (time) => {
+    return {
+        type: 'SET_TIME',
+        payload: time
     };
 };
 

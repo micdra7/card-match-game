@@ -6,11 +6,16 @@ const GameScreenProperty = ({name, value}) => {
     return (
         <div className="game-screen-property">
             <span className="name">{`${name}: `}</span>
-            <span className="value">{name !== 'Time' ? value.toFixed(2) : 
+            <span className="value">
+            {
+                name !== 'Time' ?
+                value.toFixed(2) : 
                 <Timer>
                     <Timer.Minutes formatValue={value => `${value < 10 ? `0${value}` : value}:`} />
                     <Timer.Seconds formatValue={value => `${value < 10 ? `0${value}` : value}`} />
-                </Timer>}</span>
+                </Timer>
+            }
+            </span>
         </div>
     );
 };

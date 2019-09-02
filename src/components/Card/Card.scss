@@ -1,19 +1,23 @@
 @import '../../../public/assets/styles/variables.scss';
+@import '../../../public/assets/styles/animations.scss';
 
 .card {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
+    padding: .05rem;
+    background-color: $secondary-color;
 
     & .svg-wrapper {
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
         align-items: center;
-        border-radius: .25rem;
         object-fit: cover;
+        border-radius: .5rem;
         width: 100%;
         height: 100%;
-        background-color: $secondary-color;
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        opacity: 0;
 
         & svg {
             width: 100px;
@@ -22,12 +26,23 @@
         }
     }
 
-    &.invisible {
-        opacity: 0;
+    &.matched {
+        background-color: red;
     }
 
-    &.visible {
-        animation: flipIn 1s;
-        animation-fill-mode: forwards;
+    &.selected {
+        & .svg-wrapper {
+            animation: flipIn 1s ease-in;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &.to-hide {
+        & .svg-wrapper {
+            transform: none;
+            opacity: 1;
+            animation: flipOut .5s ease-in-out;
+            animation-fill-mode: forwards;
+        }
     }
 }

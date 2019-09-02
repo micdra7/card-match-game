@@ -5,6 +5,10 @@ export const cardIcons = ['ambulance', 'anchor', 'baby-carriage', 'bath', 'bed',
 
 export const scoreArrayKey = 'scoreArray';
 
+export const smallBreakpoint = 360;
+export const mediumBreakpoint = 768;
+export const largeBreakpoint = 1024;
+
 export const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
