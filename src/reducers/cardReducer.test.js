@@ -15,12 +15,22 @@ describe('Actions', () => {
 
     it('initializeCards action', () => {
         const dispatch = jest.fn();
-        initializeCards(2)(dispatch);
+        initializeCards(3)(dispatch);
         const args = dispatch.mock.calls[0][0];
 
         expect(args.type).toBe('INIT_CARDS');
-        expect(args.payload.difficulty).toBe(2);
-        expect(args.payload.cards.length).toBe(16);
+        expect(args.payload.difficulty).toBe(3);
+        expect(args.payload.cards.length).toBe(36);
+
+        let uniqueValues = [];
+
+        args.payload.cards.forEach((element) => {
+            if (!uniqueValues.includes(element.value)) {
+                uniqueValues.push(element.value);
+            }
+        });
+
+        expect(uniqueValues.length).toBe(18);
     });
 
     it('resetState action', () => {
