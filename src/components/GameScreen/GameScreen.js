@@ -5,7 +5,7 @@ import CardCollection from '../CardCollection/CardCollection';
 import GameScreenProperty from './GameScreenProperty/GameScreenProperty';
 import './GameScreen.scss';
 
-export const GameScreen = ({cards, matchedCards, selectedCards, difficulty, select, initializeCards, cardIcons, time, score}) => {
+export const GameScreen = ({cards, matchedCards, selectedCards, difficulty, select, initializeCards, cardIcons, score}) => {
 
     const [stateUpdated, setStateUpdated] = useState(false);
 
@@ -17,7 +17,7 @@ export const GameScreen = ({cards, matchedCards, selectedCards, difficulty, sele
     return (
         <div className="game-screen-wrapper">
             <div className="top-section">
-                <GameScreenProperty name={'Time'} value={time} />
+                <GameScreenProperty name={'Time'} value={null} />
                 <GameScreenProperty name={'Score'} value={score} />
             </div>
             <div className="bottom-section">

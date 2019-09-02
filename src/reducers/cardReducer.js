@@ -103,8 +103,7 @@ export const initializeCards = (difficulty) => {
         for (let i = 0; i < max; i++) {
             for (let j = 0; j < max; j++) {
                 cards.push({x: i, y: j, value: getValue(values)});
-                console.log(cards[cards.length - 1].value);
-                
+                                
                 values.splice(values.indexOf(cards[cards.length - 1].value), 1);
             }
         }

@@ -30,3 +30,7 @@ export const saveToScoreboardAndReturnScore = (score, name) => {
 export const getScoreboard = () => {
     return JSON.parse(localStorage.getItem(scoreArrayKey)) || [];
 };
+
+export const getTimeSinceStart = (startTime) => {
+    return (Date.now() - startTime);
+};
