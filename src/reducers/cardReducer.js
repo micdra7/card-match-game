@@ -43,12 +43,22 @@ const cardReducer = (state = initialState, action) => {
                         matchedCards: matched,
                         selectedCards: []
                     };
-                } else {
+                } else if (action.payload.x === -1 && action.payload.y === -1) {
                     return {
                         ...state,
                         selectedCards: []
                     };
+                } else {
+                    return {
+                        ...state,
+                        selectedCards: selected
+                    };
                 }
+            } else if (selected.length > 2) {
+                return {
+                    ...state,
+                    selectedCards: []
+                };
             } else {
                 return {
                     ...state,
@@ -129,6 +139,15 @@ export const select = (x, y) => {
         payload: {
             x, y
         }
+    };
+};
+
+export const selectAfterTimeout = (x, y, timeout) => {
+    return dispatch => {
+
+        setTimeout(() => {
+            dispatch(select(x, y));
+        }, timeout);
     };
 };
 
