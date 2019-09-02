@@ -1,4 +1,4 @@
-import { getRandomInt, saveToScoreboardAndReturnScore, getValue, getScoreboard } from './Helper';
+import { getRandomInt, saveToScoreboardAndReturnScore, getValue, getScoreboard, getTimeSinceStart } from './Helper';
 describe('Helper methods', () => {
     it('Get value between 1 and 10', () => {
         const value = getRandomInt(1, 10);
@@ -17,5 +17,9 @@ describe('Helper methods', () => {
 
     it('Get empty scoreboard', () => {
         expect(getScoreboard()).toStrictEqual([{name: '', score: 1}]);
+    });
+
+    it('Get proper time since given start value', () => {
+        expect(getTimeSinceStart(Date.now() - 1000)).toBeCloseTo(1000);
     });
 });

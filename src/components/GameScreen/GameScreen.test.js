@@ -23,10 +23,10 @@ describe('GameScreen.js', () => {
         act(() => {
             render( <Router>
                         <GameScreen cards={[]} matchedCards={[]} selectedCards={[]} 
-                            difficulty={1} set={1} select={() => {}} initializeCards={() => {}} time={0} score={0} />
+                            difficulty={1} set={1} select={() => {}} initializeCards={() => {}} time={Date.now()} score={0} />
                     </Router>, container);
         });
-        expect(container.textContent).toBe('Time: 0.00Score: 0.00');
+        expect(Number(container.textContent.substring(6, 9))).toBeCloseTo(0);
     }); 
 
     it('renders properly with cards', () => {

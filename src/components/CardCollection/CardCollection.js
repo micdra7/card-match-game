@@ -3,14 +3,12 @@ import { Redirect } from 'react-router-dom';
 import Card from '../Card/Card';
 import './CardCollection.scss';
 
-export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, select, cardIcons }) => {
+export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, select, cardIcons, stateUpdated }) => {
 
-    const renderedContent = cards.length === 0 ? <Redirect to="/scoreboard/input" /> : cards.map((card, index) => {
+    const renderedContent = cards.length === 0 && stateUpdated ? <Redirect to="/scoreboard/input" /> : cards.map((card, index) => {
         const cardClassName = matchedCards.includes(card) ? 'card invisible' : selectedCards.includes(card) ? 'card visible' : 'card';
         const handleClick = matchedCards.includes(card) ? () => {} : () => select(card.x, card.y);
         const cardStyle = {width: `${100/(difficulty*2)}%`, height: `${100/(difficulty*2)}%`};
-
-        console.log(card.value + cardIcons[card.value]);
         
         return (
             <Card style={cardStyle} key={card.value * index + difficulty} value={cardIcons[card.value]} handleClick={handleClick} className={cardClassName} />

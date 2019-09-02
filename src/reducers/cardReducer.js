@@ -91,7 +91,8 @@ export const initializeCards = (difficulty) => {
             let random;
 
             do  {
-                random = getRandomInt(0, 32);
+                //Up to 31 - max index of cardIcons array used for storing icon names
+                random = getRandomInt(0, 31);
             } while (uniqueRandomInts.indexOf(random) !== -1);
             
             values.push(random);
@@ -102,7 +103,7 @@ export const initializeCards = (difficulty) => {
         for (let i = 0; i < max; i++) {
             for (let j = 0; j < max; j++) {
                 cards.push({x: i, y: j, value: getValue(values)});
-                
+                                
                 values.splice(values.indexOf(cards[cards.length - 1].value), 1);
             }
         }
