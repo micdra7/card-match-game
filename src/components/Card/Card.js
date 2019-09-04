@@ -7,8 +7,10 @@ const Card = ({ value, handleClick, className, cardSize }) => {
 
     return (
         <div className={className} onClick={handleClick}>
-            <div className="svg-wrapper">
-                <FontAwesomeIcon icon={value} style={style}/>
+            <div className="svg-wrapper-backside">
+                <div className="svg-wrapper">
+                    <FontAwesomeIcon icon={value} style={style}/>
+                </div>
             </div>
         </div>
     );

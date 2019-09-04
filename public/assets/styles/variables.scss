@@ -7,6 +7,7 @@ $secondary-light: #ffffff;
 $gradient-primary: #8A2387;
 $gradient-secondary: #E94057;
 $gradient-tertiary: #F27121;
+$gradient-full: linear-gradient(to left, $gradient-tertiary, $gradient-secondary, $gradient-primary);
 
 $primary-font: 'Indie Flower', cursive;
 $secondary-font: 'Amatic SC', cursive;

@@ -27,8 +27,7 @@ html {
     
     animation: bgScroll 30s ease-in-out infinite;
     background: $gradient-primary;
-    background: -webkit-linear-gradient(to left, $gradient-tertiary, $gradient-secondary, $gradient-primary);
-    background: linear-gradient(to left, $gradient-tertiary, $gradient-secondary, $gradient-primary);
+    background: $gradient-full;
     background-size: 300%;
 
 }

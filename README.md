@@ -17,4 +17,4 @@ To run the development server type `npm start`.
 ## Build
 Typing `npm run build` while in the root directory of the project will get you a production-ready version of the project
 ## Plans for the future
-As can easily be seen, this projects is not yet finished. All cards in the future will be hidden by default, and the pictures will be shown after clicking on them. The whole app definitely needs much more styling, but the core functionality has already been implemented.
+All basic functionality is now implemented. Basically all this project needs is more styling and an About section to be finished.
