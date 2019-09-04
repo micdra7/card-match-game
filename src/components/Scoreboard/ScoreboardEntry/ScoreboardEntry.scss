@@ -1,22 +1,33 @@
 @import '../../../../public/assets/styles/variables.scss';
 
 .scoreboard-entry {
-    color: $secondary-color;
+    color: $secondary-light;
     font-family: $secondary-font;
     text-shadow: 3px 3px 3px $primary-dark;
     font-size: 2rem;
+    width: 100%;
+
+
+    & span {
+        display: inline-block;
+        width: 50%;
+    }
     
     & .name {
         font-weight: bold;
         font-size: larger;
-        margin-right: .25rem;
+        padding-right: .5rem;
+        text-align: right;
     }
 
     & .score {
-        margin-left: .25rem;
+        padding-left: .5rem;
+        text-align: left;
     }
 
     @media screen and (max-width: $medium-breakpoint) {
+        font-size: 1.5rem;
+
         & .name {
             margin: 0;
         }
@@ -24,5 +35,9 @@
         & .score {
             margin: 0;
         }
+    }
+
+    @media screen and (max-width: $small-breakpoint) {
+        font-size: 1.25rem;
     }
 }

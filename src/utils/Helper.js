@@ -23,7 +23,7 @@ export const getValue = (values) => {
 export const saveToScoreboardAndReturnScore = (score, name) => {
     const scoreArray = JSON.parse(localStorage.getItem(scoreArrayKey)) || [];
 
-    if (!scoreArray.includes({score, name})) {
+    if (!scoreArray.includes({score, name}) && scoreArray.length < 10) {
         scoreArray.push({score, name});
         localStorage.setItem(scoreArrayKey, JSON.stringify(scoreArray));
     }

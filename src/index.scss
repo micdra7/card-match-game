@@ -1,4 +1,5 @@
 @import '../public/assets/styles/variables.scss';
+@import '../public/assets/styles/animations.scss';
 
 * {
     box-sizing: border-box;
@@ -23,6 +24,13 @@ code {
 html {
     width: 100%;
     height: 100%;
+    
+    animation: bgScroll 30s ease-in-out infinite;
+    background: $gradient-primary;
+    background: -webkit-linear-gradient(to left, $gradient-tertiary, $gradient-secondary, $gradient-primary);
+    background: linear-gradient(to left, $gradient-tertiary, $gradient-secondary, $gradient-primary);
+    background-size: 300%;
+
 }
 
 #root {

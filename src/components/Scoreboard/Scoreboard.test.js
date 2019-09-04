@@ -24,7 +24,7 @@ describe('Scoreboard.js', () => {
         });
 
         const element = container.getElementsByTagName('div')[0];
-        expect(element.textContent).toBe('test1.00'); 
+        expect(element.textContent).toBe('10 highest scores of all time:test: 1.00'); 
     });
 
     it('renders properly with an empty scoreboard', () => {
@@ -33,7 +33,7 @@ describe('Scoreboard.js', () => {
         });
 
         const element = container.getElementsByTagName('div')[0];
-        expect(element.textContent).toBe('Nothing to show. Play the game to get your score saved!'); 
+        expect(element.textContent).toBe('10 highest scores of all time:Nothing to show. Play the game to get your score saved!'); 
     });
 }); 
  

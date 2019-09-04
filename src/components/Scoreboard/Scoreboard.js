@@ -4,8 +4,16 @@ import './Scoreboard.scss';
 
 const Scoreboard = ({propScoreboard}) => {
 
-    const scoreboard = propScoreboard;
-    scoreboard.sort();
+    let scoreboard = propScoreboard;
+    scoreboard = scoreboard.sort((a, b) => {
+        if (a.score < b.score) {
+            return 1;
+        } else if (a.score > b.score) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
 
     const renderedScoreboard = propScoreboard === [] || propScoreboard === undefined || propScoreboard.length === 0 ? 
         <h1>Nothing to show. Play the game to get your score saved!</h1> :
@@ -15,7 +23,12 @@ const Scoreboard = ({propScoreboard}) => {
 
     return (
         <div className="scoreboard-wrapper">
-            {renderedScoreboard}
+            <header className="scoreboard-header">
+                <h4>10 highest scores of all time:</h4>
+            </header>
+            <div className="scoreboard-content">
+                {renderedScoreboard}
+            </div>
         </div>
     );
 };
