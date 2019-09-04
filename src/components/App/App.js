@@ -6,6 +6,7 @@ import DifficultySelectScreen from '../DifficultySelectScreen/DifficultySelectSc
 import Scoreboard from '../Scoreboard/Scoreboard';
 import ScoreboardInput from '../ScoreboardInput/ScoreboardInput';
 import About from '../About/About'; 
+import BackButton from '../BackButton/BackButton';
 import { getScoreboard } from '../../utils/Helper';
 import { cardIcons } from '../../utils/Helper';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -15,7 +16,7 @@ import { faAmbulance, faAnchor, faBabyCarriage, faBath, faBed, faBeer, faBell, f
         faLightbulb, faLock, faMoon, faRocket, faTv, faUmbrella, faStar, faWrench} from '@fortawesome/free-solid-svg-icons';
 import './App.scss';
 
-const App = () => {
+const App = ({ history = null}) => {
 
     library.add(faAmbulance, faAnchor, faBabyCarriage, faBath, faBed, faBeer, faBell, faBicycle,
                 faBinoculars, faBomb, faBook, faBug, faBus, faCamera, faCandyCane, faCar,
@@ -28,6 +29,7 @@ const App = () => {
     return (
         <div className="app-wrapper">
             <Router>
+                <BackButton browserHistory={history} />
                 <Route exact path="/" render={() => <Menu links={links} />} />
                 <Route exact path="/game/:difficulty" render={({ match }) => <GameScreen difficulty={match.params.difficulty} cardIcons={cardIcons} />} />
                 <Route exact path="/game/difficulty/choose" render={() => <DifficultySelectScreen difficultyList={difficultyList} />} />
@@ -37,7 +39,6 @@ const App = () => {
             </Router>
         </div>
     );
-    //TODO attribution and such (in About component);
 };
 
 export default App;
