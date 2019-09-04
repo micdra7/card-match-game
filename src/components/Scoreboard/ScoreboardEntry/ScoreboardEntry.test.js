@@ -24,7 +24,7 @@ describe('ScoreboardEntry.js', () => {
         });
 
         const element = container.getElementsByTagName('div')[0];
-        expect(element.textContent).toBe('Test123.00');
+        expect(element.textContent).toBe('Test: 123.00');
     });
 }); 
  

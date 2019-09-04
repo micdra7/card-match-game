@@ -81,7 +81,7 @@ describe('CardReducer', () => {
 
     it('CARD_SELECTED - one selected before (mismatched values)', () => {
         const state = cardReducer(oneSelectedState, {type: 'CARD_SELECTED', payload: {x: 1, y: 0}});
-        expect(state.selectedCards.length).toBe(0);
+        expect(state.selectedCards.length).toBe(2);
         expect(state.matchedCards.length).toBe(0);
     });
 
