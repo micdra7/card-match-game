@@ -1,5 +1,5 @@
 # Card match game
-Simple card matching game made with React (Hooks), Redux and React Router.
+Simple card matching game made with React (Hooks), Redux and React Router. Live preview available at this [link](https://micdra7.github.io/card-match-game).
 ## Overview
 The goal of the game is to find all matching pairs of cards. There are 4 different difficulty levels to choose from and each of them increases the number of cards you need to match. At the end of each succesful game you will be prompted to enter your name and the score will be saved to the scoreboard (visible from the main menu).
 ## Technologies used
