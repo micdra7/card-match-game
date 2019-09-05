@@ -15,6 +15,4 @@ npm install
 
 To run the development server type `npm start`.
 ## Build
-Typing `npm run build` while in the root directory of the project will get you a production-ready version of the project
-## Plans for the future
-All basic functionality is now implemented. Basically all this project needs is more styling and an About section to be finished.
+Typing `npm run build` while in the root directory of the project will get you a production-ready version of the project.
