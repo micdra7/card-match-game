@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import GameScreen from '../GameScreen/GameScreen';
 import Menu from '../Menu/Menu';
 import DifficultySelectScreen from '../DifficultySelectScreen/DifficultySelectScreen';

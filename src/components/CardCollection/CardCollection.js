@@ -28,31 +28,35 @@ export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty,
 
         setRenderedContent(
             cards.length === 0 && stateUpdated ? <Redirect to="/scoreboard/input" /> : cards.map((card, index) => {
+
+                let cardClass = (matchedCards.includes(card) ? 'card matched' : 
+                    (selectedCards.includes(card) ? 'card selected' : 
+                    (prevSelected.includes(card) ? 'card to-hide' : 'card')));
+
                 const handleClick = matchedCards.includes(card) || selectedCards.includes(card) ? () => {} : 
                     () => {
                         select(card.x, card.y);
-                        const prev = prevSelected.concat(card);
+                        let prev = prevSelected.concat(card);
+
+                        if (prev.length > 2) {
+                            prev = prev.slice(2);
+                        }
+
                         setPrevSelected(prev);
                         
                         if (prev.length === 2) {
-                            setTimeout(() => {
-                                setPrevSelected([]);
-                            }, 1000);
-                            selectAfterTimeout(-1, -1, 1000);
+                            if (prev[0].value !== prev[1].value) {
+                                cardClass = 'card to-hide';
+                                selectAfterTimeout(-1, -1, 500);
+                            }
                         }
                     };
+
                 const cardSize = windowWidth <= smallBreakpoint ? cardSizeMobile[difficulty - 1] :
                                     (windowWidth <= mediumBreakpoint ? cardSizeTablet[difficulty - 1] : cardSizeDesktop[difficulty - 1]);
-                let cardClass = (matchedCards.includes(card) ? 'card matched' : 
-                                    (selectedCards.includes(card) ? 'card selected' : 'card'));
-
-                
-                if (cardClass === 'card selected' && prevSelected.length === 0) {
-                    cardClass = 'card to-hide';
-                }
 
                 return (
-                    <Card key={card.value * index + difficulty} value={cardIcons[card.value]} 
+                    <Card key={card.value * index + difficulty + index} value={cardIcons[card.value]} 
                         handleClick={handleClick} className={cardClass} cardSize={cardSize} />
                 );
             })
@@ -68,8 +72,14 @@ export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty,
             gridTemplateColumns: gridForDifficulty,
             gridTemplateRows: gridForDifficulty
         });
+
+        return () => {
+            if (prevSelected.length >= 2) {
+                setPrevSelected([]);
+            }
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [cards, selectedCards, matchedCards]);
+    }, [cards, selectedCards, matchedCards, windowWidth]);
 
     
 

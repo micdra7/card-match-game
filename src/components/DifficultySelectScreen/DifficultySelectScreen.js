@@ -10,8 +10,8 @@ export const DifficultySelectScreen = ({ difficultyList, resetState }) => {
         resetState();
     }, [resetState]);
 
-    const renderedLinks = difficultyList.map(difficulty => (
-        <MenuLink key={difficulty.value * difficulty.name.length} href={`/game/${difficulty.value}`} 
+    const renderedLinks = difficultyList.map((difficulty, index) => (
+        <MenuLink key={difficulty.value * difficulty.name.length + index} href={`/game/${difficulty.value}`} 
             text={difficulty.name} className="primary" />
     ));
 

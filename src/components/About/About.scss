@@ -1,0 +1,41 @@
+@import '../../../public/assets/styles/variables.scss';
+
+.about-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    font-family: $primary-font;
+    color: $secondary-light;
+    text-align: center;
+}
+
+.about-header {
+    & h1 {
+        margin: 0;
+        font-size: 3rem;
+    }
+}
+
+.about-content {
+    & p {
+        font-size: 2rem;
+    }
+
+    & .about-socials {
+        & span {
+            display: inline-block;
+            margin: .5rem;
+        }
+        
+        & svg {
+            color: $secondary-light;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+}
