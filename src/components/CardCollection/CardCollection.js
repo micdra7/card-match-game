@@ -56,7 +56,7 @@ export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty,
                                     (windowWidth <= mediumBreakpoint ? cardSizeTablet[difficulty - 1] : cardSizeDesktop[difficulty - 1]);
 
                 return (
-                    <Card key={card.value * index + difficulty} value={cardIcons[card.value]} 
+                    <Card key={card.value * index + difficulty + index} value={cardIcons[card.value]} 
                         handleClick={handleClick} className={cardClass} cardSize={cardSize} />
                 );
             })
