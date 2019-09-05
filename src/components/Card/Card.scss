@@ -33,6 +33,7 @@
 
 
         & svg {        
+            cursor: pointer;
             width: 100px;
             height: 100px;
             color: $primary-dark;
@@ -49,6 +50,7 @@
             transform: none;
 
             & svg {
+                cursor: not-allowed;
                 color: $secondary-light;
             }
         }
@@ -56,7 +58,7 @@
 
     &.selected {
         & .svg-wrapper {
-            animation: flipIn 1s ease-in;
+            animation: flipIn .5s ease-in;
             animation-fill-mode: forwards;
         }
     }

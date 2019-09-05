@@ -33,5 +33,12 @@
 
 .scoreboard-content {
     width: 100%;
+
+    & h1 {
+        font-family: $primary-font;
+        color: $secondary-light;
+        width: 100%;
+        text-align: center;
+    }
 }
 

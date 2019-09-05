@@ -20,18 +20,23 @@
     }
 
     & label {
-        color: $secondary-color;
-        font-family: $secondary-font;
+        color: $secondary-light;
+        font-family: $primary-font;
         text-shadow: 3px 3px 3px $primary-dark;
-        font-size: 2rem;
+        font-size: 4rem;
+
+        @media screen and (max-width: $medium-breakpoint){
+            font-size: 2rem;
+        }
     }
 
     & button {
-        font-family: $secondary-font;
+        font-family: $primary-font;
         font-size: 2rem;        
-        color: $primary-color;
-        background-color: $secondary-color;
-        border: 1px solid $primary-color;
+        color: $secondary-light;
+        background: transparent;
+        border: none;
+        cursor: pointer;
     }
 
     & input {
