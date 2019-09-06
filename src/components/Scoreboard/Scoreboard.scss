@@ -28,6 +28,10 @@
         @media screen and (max-width: $small-breakpoint) {
             font-size: 1.5rem;
         }
+
+        @media screen and (min-width: $extra-large-breakpoint) {
+            font-size: 6rem;
+        }
     }
 }
 

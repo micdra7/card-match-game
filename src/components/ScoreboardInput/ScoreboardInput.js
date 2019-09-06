@@ -11,7 +11,7 @@ const ScoreboardInput = ({ score, name, time, setScore, setName }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const fullScore = score - ((Date.now() - time) / (1000 * 60 * 60 * 24 * 365)) / 2 ; 
+        const fullScore = score - ((Date.now() - time) / 1000) ; 
 
         setScore(fullScore);
         saveToScoreboardAndReturnScore(fullScore, name);

@@ -21,10 +21,18 @@ export const getValue = (values) => {
 };
 
 export const saveToScoreboardAndReturnScore = (score, name) => {
-    const scoreArray = JSON.parse(localStorage.getItem(scoreArrayKey)) || [];
+    let scoreArray = JSON.parse(localStorage.getItem(scoreArrayKey)) || [];
 
-    if (!scoreArray.includes({score, name}) && scoreArray.length < 10) {
-        scoreArray.push({score, name});
+    if (!scoreArray.includes({score, name})) {
+        const lowerElements = scoreArray.filter(element => element.score < score);
+        
+        if (lowerElements.length > 0) {
+            const lowerElementsSorted = lowerElements.sort((a, b) => (a.score - b.score));
+            scoreArray[scoreArray.indexOf(lowerElementsSorted[0])] = {score, name};
+        } else if (scoreArray.length < 10) {
+            scoreArray.push({score, name});
+        }
+        
         localStorage.setItem(scoreArrayKey, JSON.stringify(scoreArray));
     }
 

@@ -16,12 +16,20 @@
     & h1 {
         margin: 0;
         font-size: 3rem;
+
+        @media screen and (min-width: $extra-large-breakpoint) {
+            font-size: 8rem;
+        }
     }
 }
 
 .about-content {
     & p {
         font-size: 2rem;
+
+        @media screen and (min-width: $extra-large-breakpoint) {
+            font-size: 6rem;
+        }
     }
 
     & .about-socials {
