@@ -28,6 +28,10 @@
         @media screen and (max-width: $medium-breakpoint){
             font-size: 2rem;
         }
+
+        @media screen and (min-width: $extra-large-breakpoint) {
+            font-size: 8rem;
+        }
     }
 
     & button {
@@ -37,11 +41,23 @@
         background: transparent;
         border: none;
         cursor: pointer;
+
+        &:hover {
+            color: $secondary-color;
+        }
+        
+        @media screen and (min-width: $extra-large-breakpoint) {
+            font-size: 6rem;
+        }
     }
 
     & input {
         font-family: $secondary-font;
         font-size: 2rem;        
         color: $primary-color;
+        
+        @media screen and (min-width: $extra-large-breakpoint) {
+            font-size: 6rem;
+        }
     }
 }

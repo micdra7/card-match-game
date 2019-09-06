@@ -25,7 +25,7 @@ export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty,
 
     useEffect(() => {
         const cardSizeDesktop = [100, 80, 60, 40];
-        const cardSizeTablet = [100, 70, 55, 35];
+        const cardSizeTablet = [100, 70, 50, 35];
         const cardSizeMobile = [100, 55, 35, 25];
 
         setRenderedContent(
@@ -59,7 +59,7 @@ export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty,
                                     
                 if (windowWidth > windowHeight && 
                         (windowWidth <= mediumBreakpoint || windowHeight <= mediumBreakpoint)) {
-                    cardSize -= (windowWidth <= smallBreakpoint ? 20 : 15);
+                    cardSize -= (windowWidth <= smallBreakpoint || windowHeight <= smallBreakpoint ? 20 : 15);
                 }
 
                 return (
