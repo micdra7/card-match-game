@@ -7,23 +7,25 @@ import './CardCollection.scss';
 export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty, select, cardIcons, stateUpdated, selectAfterTimeout }) => {
 
     const [windowWidth, setWindowWidth] = useState(0);
+    const [windowHeight, setWindowHeight] = useState(0);
     const [renderedContent, setRenderedContent] = useState([]);
     const [style, setStyle] = useState({});
     const [prevSelected, setPrevSelected] = useState([]);
 
     useEffect(() => {
-        const updateWindowWidth = () => {
+        const updateWindowDimensions = () => {
             setWindowWidth(window.innerWidth);
+            setWindowHeight(window.innerHeight);
         };
 
-        updateWindowWidth();
+        updateWindowDimensions();
 
-        return updateWindowWidth;
-    }, []);
+        return updateWindowDimensions;
+    });
 
     useEffect(() => {
         const cardSizeDesktop = [100, 80, 60, 40];
-        const cardSizeTablet = [100, 70, 55, 40];
+        const cardSizeTablet = [100, 70, 55, 35];
         const cardSizeMobile = [100, 55, 35, 25];
 
         setRenderedContent(
@@ -52,8 +54,13 @@ export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty,
                         }
                     };
 
-                const cardSize = windowWidth <= smallBreakpoint ? cardSizeMobile[difficulty - 1] :
+                let cardSize = windowWidth <= smallBreakpoint ? cardSizeMobile[difficulty - 1] :
                                     (windowWidth <= mediumBreakpoint ? cardSizeTablet[difficulty - 1] : cardSizeDesktop[difficulty - 1]);
+                                    
+                if (windowWidth > windowHeight && 
+                        (windowWidth <= mediumBreakpoint || windowHeight <= mediumBreakpoint)) {
+                    cardSize -= (windowWidth <= smallBreakpoint ? 20 : 15);
+                }
 
                 return (
                     <Card key={card.value * index + difficulty + index} value={cardIcons[card.value]} 
