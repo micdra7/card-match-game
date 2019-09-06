@@ -30,7 +30,7 @@ const cardReducer = (state = initialState, action) => {
                     if (matched.length === state.cards.length) {
                         return {
                             ...state,
-                            score: state.score += 40,
+                            score: state.difficulty >= 3 ? state.score += 60 : state.score += 40,
                             cards: [],
                             selectedCards: [],
                             matchedCards: []
