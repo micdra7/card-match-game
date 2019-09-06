@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/card-match-game/static/css/main.cf6d192f.chunk.css",
-    "main.js": "/card-match-game/static/js/main.99ddc5f8.chunk.js",
-    "main.js.map": "/card-match-game/static/js/main.99ddc5f8.chunk.js.map",
+    "main.css": "/card-match-game/static/css/main.ddfb2ee8.chunk.css",
+    "main.js": "/card-match-game/static/js/main.18c32550.chunk.js",
+    "main.js.map": "/card-match-game/static/js/main.18c32550.chunk.js.map",
     "runtime~main.js": "/card-match-game/static/js/runtime~main.c06ad6f8.js",
     "runtime~main.js.map": "/card-match-game/static/js/runtime~main.c06ad6f8.js.map",
-    "static/js/2.336a947d.chunk.js": "/card-match-game/static/js/2.336a947d.chunk.js",
-    "static/js/2.336a947d.chunk.js.map": "/card-match-game/static/js/2.336a947d.chunk.js.map",
+    "static/js/2.b4e794aa.chunk.js": "/card-match-game/static/js/2.b4e794aa.chunk.js",
+    "static/js/2.b4e794aa.chunk.js.map": "/card-match-game/static/js/2.b4e794aa.chunk.js.map",
     "index.html": "/card-match-game/index.html",
-    "precache-manifest.069a0a94665ff8289194bfc108160efa.js": "/card-match-game/precache-manifest.069a0a94665ff8289194bfc108160efa.js",
+    "precache-manifest.8e5054312e639d33dc5318747511dba2.js": "/card-match-game/precache-manifest.8e5054312e639d33dc5318747511dba2.js",
     "service-worker.js": "/card-match-game/service-worker.js",
-    "static/css/main.cf6d192f.chunk.css.map": "/card-match-game/static/css/main.cf6d192f.chunk.css.map"
+    "static/css/main.ddfb2ee8.chunk.css.map": "/card-match-game/static/css/main.ddfb2ee8.chunk.css.map"
   }
 }
