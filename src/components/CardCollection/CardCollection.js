@@ -54,12 +54,11 @@ export const CardCollection = ({ cards, matchedCards, selectedCards, difficulty,
                         }
                     };
 
-                let cardSize = windowWidth <= smallBreakpoint ? cardSizeMobile[difficulty - 1] :
-                                    (windowWidth <= mediumBreakpoint ? cardSizeTablet[difficulty - 1] : cardSizeDesktop[difficulty - 1]);
+                let cardSize = windowWidth <= smallBreakpoint || windowHeight <= smallBreakpoint ? cardSizeMobile[difficulty - 1] :
+                                    (windowWidth <= mediumBreakpoint || windowHeight <= mediumBreakpoint ? cardSizeTablet[difficulty - 1] : cardSizeDesktop[difficulty - 1]);
                                     
-                if (windowWidth > windowHeight && 
-                        (windowWidth <= mediumBreakpoint || windowHeight <= mediumBreakpoint)) {
-                    cardSize -= (windowWidth <= smallBreakpoint || windowHeight <= smallBreakpoint ? 20 : 15);
+                if (windowWidth > windowHeight && (windowHeight <= mediumBreakpoint)) {
+                    cardSize -= (windowWidth <= smallBreakpoint || windowHeight <= smallBreakpoint ? 10 : 15 * ((4 - difficulty) === 0 ? 1 : (4 - difficulty)));
                 }
 
                 return (
